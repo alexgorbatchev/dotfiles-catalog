@@ -1,0 +1,568 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
+# ==============================================================================
+# GUI CONFIG
+# ==============================================================================
+gui:
+  # Custom author colors for commits pane (map author name to color)
+  # authorColors:
+  #   'John Smith': 'red'
+  #   'Alan Smithee': '#00ff00'
+  #   '*': '#0000ff'  # wildcard for all other authors
+
+  # Custom branch colors based on regex patterns
+  # branchColorPatterns:
+  #   '^docs/': '#11aaff'
+  #   'ISSUE-\d+': '#ff5733'
+
+  # Custom icons for filenames and file extensions (requires nerd fonts)
+  # customIcons:
+  #   filenames:
+  #     "CONTRIBUTING.md": { icon: "\uede2", color: "#FEDDEF" }
+  #   extensions:
+  #     ".cat": { icon: "\U000f011b", color: "#BC4009" }
+
+  # Number of lines to scroll in main window
+  # scrollHeight: 2
+
+  # Allow scrolling past the bottom of content in main window
+  # scrollPastBottom: true
+
+  # Lines of context to keep visible when scrolling (scroll-off margin)
+  # scrollOffMargin: 2
+
+  # Scroll behavior: 'margin' (default) | 'jump'
+  # scrollOffBehavior: margin
+
+  # Spaces per tab for diffs and main view content
+  # tabWidth: 4
+
+  # Capture mouse events (hold option key on macOS to select text)
+  # mouseEvents: true
+
+  # Skip warning when amending a commit
+  # skipAmendWarning: false
+
+  # Skip warning when discarding changes in staging view
+  # skipDiscardChangeWarning: false
+
+  # Skip warning when applying/popping stash
+  # skipStashWarning: false
+
+  # Skip warning when committing without staged files (stages all if true)
+  # skipNoStagedFilesWarning: false
+
+  # Skip warning when rewording commit via external editor
+  # skipRewordInEditorWarning: false
+
+  # Skip confirmation when switching to worktree on checkout
+  # skipSwitchWorktreeOnCheckoutWarning: false
+
+  # Fraction of screen width for left side panel (0 to 1.0)
+  # sidePanelWidth: 0.3333
+
+  # Increase height of focused side panel (accordion effect)
+  # expandFocusedSidePanel: false
+
+  # Weight of expanded side panel relative to others (if expandFocusedSidePanel is true)
+  # expandedSidePanelWeight: 2
+
+  # How to split main window: 'horizontal' | 'vertical' | 'flexible' (default)
+  # mainPanelSplitMode: flexible
+
+  # Location of enlarged side view in half screen mode: 'left' | 'top'
+  # enlargedSideViewLocation: left
+
+  # Wrap long lines in staging view
+  # wrapLinesInStagingView: true
+
+  # Enable hunk selection mode by default in staging view
+  useHunkModeInStagingView: false
+
+  # Language: 'auto' | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru' | 'pt'
+  # language: auto
+
+  # Time format for commits (Go time format syntax)
+  # timeFormat: 02 Jan 06
+
+  # Time format for recent times (less than 24 hours ago)
+  # shortTimeFormat: 3:04PM
+
+  # Theme colors and styles
+  theme:
+    activeBorderColor:
+      - "#ff9e64"
+      - bold
+    inactiveBorderColor:
+      - "#29a4bd"
+    searchingActiveBorderColor:
+      - "#ff9e64"
+      - bold
+    optionsTextColor:
+      - "#7aa2f7"
+    selectedLineBgColor:
+      - "#2e3c64"
+    inactiveViewSelectedLineBgColor:
+      - "#292e42"
+    cherryPickedCommitFgColor:
+      - "#7aa2f7"
+    cherryPickedCommitBgColor:
+      - "#bb9af7"
+    markedBaseCommitFgColor:
+      - "#7aa2f7"
+    markedBaseCommitBgColor:
+      - "#e0af68"
+    unstagedChangesColor:
+      - "#db4b4b"
+    defaultFgColor:
+      - "#a9b1d6"
+
+  # Commit message length indicator
+  # commitLength:
+  #   show: true
+
+  # Show '5 of 20' footer at bottom of list views
+  # showListFooter: true
+
+  # Display files as tree (toggle with '`' key)
+  # showFileTree: true
+
+  # Show "/" root item in file tree when multiple top-level items
+  # showRootItemInFileTree: true
+
+  # Show number of lines changed per file in Files view
+  # showNumstatInFilesView: false
+
+  # Show random tip in command log on startup
+  # showRandomTip: true
+
+  # Show command log panel
+  # showCommandLog: true
+
+  # Show bottom line with keybinding info
+  # showBottomLine: true
+
+  # Show jump-to-window keybindings in window titles
+  # showPanelJumps: true
+
+  # Nerd fonts version: '2' | '3' | '' (empty = no icons)
+  nerdFontsVersion: "3"
+
+  # Show file icons (requires nerdFontsVersion)
+  # showFileIcons: true
+
+  # Length of author name in commits view (2 = initials only)
+  # commitAuthorShortLength: 2
+
+  # Length of author name in expanded commits view
+  # commitAuthorLongLength: 17
+
+  # Length of commit hash in commits view (0 shows '*' if no NF icons)
+  # commitHashLength: 8
+
+  # Show commit hashes alongside branch names in branches view
+  # showBranchCommitHash: false
+
+  # Show divergence from base branch: 'none' | 'onlyArrow' | 'arrowAndNumber'
+  # showDivergenceFromBaseBranch: none
+
+  # Height of command log view
+  # commandLogSize: 8
+
+  # Split main window when viewing file changes: 'auto' | 'always'
+  # splitDiff: auto
+
+  # Default window size: 'normal' | 'half' | 'full'
+  # screenMode: normal
+
+  # Window border style: 'rounded' | 'single' | 'double' | 'hidden' | 'bold'
+  # border: rounded
+
+  # Epic explosion animation when nuking working tree
+  # animateExplosion: true
+
+  # Stack UI components: 'auto' | 'always' | 'never'
+  # portraitMode: auto
+
+  # Filter mode when typing '/': 'substring' | 'fuzzy'
+  # filterMode: substring
+
+  # Spinner animation frames and speed
+  # spinner:
+  #   frames:
+  #     - '|'
+  #     - /
+  #     - '-'
+  #     - \
+  #   rate: 50
+
+  # Status panel view: 'dashboard' | 'allBranchesLog'
+  # statusPanelView: dashboard
+
+  # Jump to Files panel after popping stash
+  # switchToFilesAfterStashPop: true
+
+  # Jump to Files panel after applying stash
+  # switchToFilesAfterStashApply: true
+
+  # When using panel jump keys and target is active, go to next tab
+  # switchTabsWithPanelJumpKeys: false
+
+# ==============================================================================
+# GIT CONFIG
+# ==============================================================================
+git:
+  # Custom pagers for diffs (e.g., delta, diff-so-fancy)
+  # pagers:
+  #   - colorArg: always
+  #     pager: delta --dark --paging=never
+  #     externalDiffCommand: ""
+  #     useExternalDiffGitConfig: false
+
+  # Commit settings
+  # commit:
+  #   signOff: false
+  #   autoWrapCommitMessage: true
+  #   autoWrapWidth: 72
+
+  # Merge settings
+  # merging:
+  #   manualCommit: false
+  #   args: ""
+  #   squashMergeMessage: Squash merge {{selectedRef}} into {{currentBranch}}
+
+  # Branches considered 'main' for displaying commits
+  # mainBranches:
+  #   - master
+  #   - main
+
+  # Prefix to skip hooks (commits starting with this skip pre-commit hooks)
+  skipHookPrefix: '-'
+
+  # Periodically fetch from remote
+  # autoFetch: true
+
+  # Periodically refresh files and submodules
+  # autoRefresh: true
+
+  # Auto fast-forward branches after fetch: 'none' | 'onlyMainBranches' | 'allBranches'
+  # autoForwardBranches: onlyMainBranches
+
+  # Pass --all arg to git fetch
+  # fetchAll: true
+
+  # Auto-stage resolved conflicts and prompt to continue merge/rebase
+  # autoStageResolvedConflicts: true
+
+  # Command for branch log in main window
+  # branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
+
+  # Commands for all branches log (cycled in order)
+  # allBranchesLogCmds:
+  #   - git log --graph --all --color=always --abbrev-commit --decorate --date=relative --pretty=medium
+
+  # Ignore whitespace in diffs (toggle with <c-w>)
+  # ignoreWhitespaceInDiffView: false
+
+  # Lines of context around diff hunks (change with { and })
+  # diffContextSize: 3
+
+  # Threshold for rename detection in percent (change with ( and ))
+  # renameSimilarityThreshold: 50
+
+  # Don't spawn separate process for GPG
+  # overrideGpg: false
+
+  # Disable force pushes
+  # disableForcePushing: false
+
+  # Predefined commit message prefix based on branch name patterns
+  # commitPrefix:
+  #   - pattern: "^\\w+\\/(\\w+-\\w+).*"
+  #     replace: '[$1] '
+
+  # Repository-specific commit prefixes
+  # commitPrefixes:
+  #   my_project:
+  #     - pattern: "^\\w+\\/(\\w+-\\w+).*"
+  #       replace: '[$1] '
+
+  # Prefix for new branch names
+  branchPrefix: "agorbatchev/"
+
+  # Parse emoji strings in commit messages (e.g., :rocket: → 🚀)
+  # parseEmoji: false
+
+  # Log display settings
+  # log:
+  #   order: topo-order  # 'date-order' | 'author-date-order' | 'topo-order' | 'default'
+  #   showGraph: always  # 'always' | 'never' | 'when-maximised'
+  #   showWholeGraph: false
+
+  # Local branch sort order: 'date' | 'recency' | 'alphabetical'
+  # localBranchSortOrder: date
+
+  # Remote branch sort order: 'date' | 'alphabetical'
+  # remoteBranchSortOrder: date
+
+  # Truncate commit hashes when copying to clipboard (40 = no truncation)
+  # truncateCopiedCommitHashesTo: 12
+
+# ==============================================================================
+# OS CONFIG
+# ==============================================================================
+os:
+  # Editor preset: 'vim' | 'nvim' | 'nvim-remote' | 'emacs' | 'nano' | 'micro' |
+  #                'vscode' | 'sublime' | 'bbedit' | 'kakoune' | 'helix' | 'xcode' | 'zed'
+  # editPreset: vscode
+
+  # Command for editing a file. Should contain "{{filename}}".
+  edit: 'lazygit-open file "{{filename}}"'
+
+  # Command for editing a file at a given line number. Should contain
+  # "{{filename}}", and may optionally contain "{{line}}".
+  editAtLine: 'lazygit-open file-at-line "{{filename}}" "{{line}}"'
+
+  # Command for editing a file at a line and waiting for the editor to close.
+  editAtLineAndWait: "nvim +{{line}} {{filename}}"
+
+  # Editor runs in the terminal (required for nvim)
+  editInTerminal: true
+
+  # Command for opening a file, as if the file is double-clicked. Should
+  # contain "{{filename}}", but doesn't support "{{line}}".
+  open: 'lazygit-open file "{{filename}}"'
+
+  # Command for opening a directory in the editor.
+  openDirInEditor: 'lazygit-open dir "{{dir}}"'
+
+  # Command for opening files (double-click behavior)
+  # open: "open {{filename}}"
+
+  # Command for opening links
+  # openLink: "open {{link}}"
+
+  # Custom clipboard commands (for OSC52 support, etc.)
+  # copyToClipboardCmd: ""
+  # readFromClipboardCmd: ""
+
+  # Shell startup file with aliases/functions for ':' command prompt
+  # shellFunctionsFile: ~/.my_aliases.sh
+
+# ==============================================================================
+# UPDATE CONFIG
+# ==============================================================================
+# update:
+#   method: prompt  # 'prompt' | 'background' | 'never'
+#   days: 14
+
+# ==============================================================================
+# REFRESHER CONFIG
+# ==============================================================================
+# refresher:
+#   refreshInterval: 10  # File/submodule refresh interval in seconds
+#   fetchInterval: 60    # Re-fetch interval in seconds
+
+# ==============================================================================
+# BEHAVIOR CONFIG
+# ==============================================================================
+# Confirmation popup before quitting
+# confirmOnQuit: false
+
+# Exit when pressing escape with nothing to cancel
+# quitOnTopLevelReturn: false
+
+# Don't display introductory popups on startup
+# disableStartupPopups: false
+
+# What to do outside a git repo: 'prompt' | 'create' | 'skip' | 'quit'
+# notARepository: prompt
+
+# Show confirmation when subprocess terminates
+# promptToReturnFromSubprocess: true
+
+# ==============================================================================
+# CUSTOM COMMANDS
+# ==============================================================================
+# User-configured commands invoked from within Lazygit
+# customCommands: []
+
+# ==============================================================================
+# SERVICES (Custom PR URLs)
+# ==============================================================================
+# For on-premises git providers with different URLs for git and web interface
+# services:
+#   'git.work.com': 'gitlab:gitservice.work.com'
+
+# ==============================================================================
+# KEYBINDINGS
+# ==============================================================================
+# keybinding:
+#   universal:
+#     quit: q
+#     quit-alt1: <c-c>
+#     suspendApp: <c-z>
+#     return: <esc>
+#     quitWithoutChangingDirectory: Q
+#     togglePanel: <tab>
+#     prevItem: <up>
+#     nextItem: <down>
+#     prevItem-alt: k
+#     nextItem-alt: j
+#     prevPage: ','
+#     nextPage: .
+#     scrollLeft: H
+#     scrollRight: L
+#     gotoTop: <
+#     gotoBottom: '>'
+#     toggleRangeSelect: v
+#     rangeSelectDown: <s-down>
+#     rangeSelectUp: <s-up>
+#     prevBlock: <left>
+#     nextBlock: <right>
+#     prevBlock-alt: h
+#     nextBlock-alt: l
+#     jumpToBlock:
+#       - "1"
+#       - "2"
+#       - "3"
+#       - "4"
+#       - "5"
+#     focusMainView: "0"
+#     nextMatch: "n"
+#     prevMatch: "N"
+#     startSearch: /
+#     optionMenu: <disabled>
+#     optionMenu-alt1: '?'
+#     select: <space>
+#     goInto: <enter>
+#     confirm: <enter>
+#     remove: d
+#     new: "n"
+#     edit: e
+#     openFile: o
+#     scrollUpMain: <pgup>
+#     scrollDownMain: <pgdown>
+#     scrollUpMain-alt1: K
+#     scrollDownMain-alt1: J
+#     scrollUpMain-alt2: <c-u>
+#     scrollDownMain-alt2: <c-d>
+#     executeShellCommand: ':'
+#     createRebaseOptionsMenu: m
+#     pushFiles: P
+#     pullFiles: p
+#     refresh: R
+#     createPatchOptionsMenu: <c-p>
+#     nextTab: ']'
+#     prevTab: '['
+#     nextScreenMode: +
+#     prevScreenMode: _
+#     undo: z
+#     redo: Z
+#     filteringMenu: <c-s>
+#     diffingMenu: W
+#     diffingMenu-alt: <c-e>
+#     copyToClipboard: <c-o>
+#     openRecentRepos: <c-r>
+#     submitEditorText: <enter>
+#     extrasMenu: '@'
+#     toggleWhitespaceInDiffView: <c-w>
+#     increaseContextInDiffView: '}'
+#     decreaseContextInDiffView: '{'
+#     increaseRenameSimilarityThreshold: )
+#     decreaseRenameSimilarityThreshold: (
+#     openDiffTool: <c-t>
+#
+keybinding:
+  universal:
+    openFile: <disabled>
+#   status:
+#     checkForUpdate: u
+#     recentRepos: <enter>
+#     allBranchesLogGraph: a
+#   files:
+#     commitChanges: c
+#     commitChangesWithoutHook: w
+#     amendLastCommit: A
+#     commitChangesWithEditor: C
+#     findBaseCommitForFixup: <c-f>
+#     confirmDiscard: x
+#     ignoreFile: i
+#     refreshFiles: r
+#     stashAllChanges: s
+#     viewStashOptions: S
+#     toggleStagedAll: a
+#     viewResetOptions: D
+#     fetch: f
+#     toggleTreeView: '`'
+#     openMergeOptions: M
+#     openStatusFilter: <c-b>
+#     copyFileInfoToClipboard: "y"
+#     collapseAll: '-'
+#     expandAll: =
+#   branches:
+#     createPullRequest: o
+#     viewPullRequestOptions: O
+#     copyPullRequestURL: <c-y>
+#     checkoutBranchByName: c
+#     forceCheckoutBranch: F
+#     checkoutPreviousBranch: '-'
+#     rebaseBranch: r
+#     renameBranch: R
+#     mergeIntoCurrentBranch: M
+#     moveCommitsToNewBranch: "N"
+#     viewGitFlowOptions: i
+#     fastForward: f
+#     createTag: T
+#     pushTag: P
+#     setUpstream: u
+#     fetchRemote: f
+#     addForkRemote: F
+#     sortOrder: s
+#   worktrees:
+#     viewWorktreeOptions: w
+#   commits:
+#     squashDown: s
+#     renameCommit: r
+#     renameCommitWithEditor: R
+#     viewResetOptions: g
+#     markCommitAsFixup: f
+#     createFixupCommit: F
+#     squashAboveCommits: S
+#     moveDownCommit: <c-j>
+#     moveUpCommit: <c-k>
+#     amendToCommit: A
+#     resetCommitAuthor: a
+#     pickCommit: p
+#     revertCommit: t
+#     cherryPickCopy: C
+#     pasteCommits: V
+#     markCommitAsBaseForRebase: B
+#     tagCommit: T
+#     checkoutCommit: <space>
+#     resetCherryPick: <c-R>
+#     copyCommitAttributeToClipboard: "y"
+#     openLogMenu: <c-l>
+#     openInBrowser: o
+#     viewBisectOptions: b
+#     startInteractiveRebase: i
+#     selectCommitsOfCurrentBranch: '*'
+#   amendAttribute:
+#     resetAuthor: a
+#     setAuthor: A
+#     addCoAuthor: c
+#   stash:
+#     popStash: g
+#     renameStash: r
+#   commitFiles:
+#     checkoutCommitFile: c
+#   main:
+#     toggleSelectHunk: a
+#     pickBothHunks: b
+#     editSelectHunk: E
+#   submodules:
+#     init: i
+#     update: u
+#     bulkMenu: b
+#   commitMessage:
+#     commitMenu: <c-o>

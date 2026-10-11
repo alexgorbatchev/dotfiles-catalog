@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mode="${1:-}"
+
+vim_escape() {
+  printf '%s' "$1" | sed "s/'/''/g"
+}
+
+open_in_current_nvim() {
+  local action="$1"
+
+  if [[ -z "${NVIM:-}" ]]; then
+    return 1
+  fi
+
+  nvim --server "$NVIM" --remote-send "$action" >/dev/null 2>&1
+}
+
+case "$mode" in
+  file)
+    path="${2:-}"
+
+    if [[ -n "$path" ]] && open_in_current_nvim "<Cmd>execute 'drop ' . fnameescape('$(vim_escape "$path")')<CR>"; then
+      exit 0
+    fi
+
+    exec nvim "$path"
+    ;;
+
+  file-at-line)
+    path="${2:-}"
+    line="${3:-1}"
+
+    if [[ -n "$path" ]] && open_in_current_nvim "<Cmd>execute 'drop ' . fnameescape('$(vim_escape "$path")') | call cursor(${line}, 1)<CR>"; then
+      exit 0
+    fi
+
+    exec nvim "+${line}" "$path"
+    ;;
+
+  dir)
+    path="${2:-}"
+
+    if [[ -n "$path" ]] && open_in_current_nvim "<Cmd>execute 'cd ' . fnameescape('$(vim_escape "$path")') | edit .<CR>"; then
+      exit 0
+    fi
+
+    exec nvim "$path"
+    ;;
+
+  *)
+    printf 'Usage: %s {file|file-at-line|dir} <path> [line]\n' "$0" >&2
+    exit 1
+    ;;
+esac
