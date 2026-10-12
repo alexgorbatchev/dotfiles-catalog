@@ -9,6 +9,7 @@ Git-hosted tool definitions and companion files for `dotfiles catalog fetch`.
 - Keep each tool directory free of additional `*.tool.ts` files, symlinks, submodules and unsafe or case-colliding names. Store dependency tools as separate catalog IDs.
 - Use the maintained dotfiles skill and verified installer API when editing definitions. Preserve source configurations unless a change is necessary to make the imported tool self-contained.
 - Keep this repository limited to Git source content. Publishing automation is maintained separately; do not add a website or search service.
+- Keep the root README independent of catalog size: link to `tools/` instead of listing available tools or maintaining per-tool requirements there.
 
 ## Validation and boundaries
 
