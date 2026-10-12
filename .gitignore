@@ -1,2 +1,3 @@
 .tmp/
 .workspaces/
+node_modules/

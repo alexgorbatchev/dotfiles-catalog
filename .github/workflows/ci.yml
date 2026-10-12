@@ -1,0 +1,55 @@
+name: Catalog CI
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalog-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Layout and typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout catalog
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Checkout pinned installer SDK source
+        uses: actions/checkout@v6
+        with:
+          repository: alexgorbatchev/dotfiles
+          ref: f0243ea9dd9626404990a0ad6d9fb83a32448d63
+          path: .tmp/installer
+          persist-credentials: false
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: .tmp/installer/go.mod
+          cache-dependency-path: .tmp/installer/go.sum
+
+      - name: Install catalog dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build canonical SDK declarations
+        working-directory: .tmp/installer
+        run: |
+          bun install --frozen-lockfile
+          go run scripts/build/main.go --assets-only
+
+      - name: Check catalog
+        run: bun check
