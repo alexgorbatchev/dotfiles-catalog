@@ -1,24 +1,24 @@
-import { defineTool } from '@alexgorbatchev/dotfiles';
+import { defineTool } from "@alexgorbatchev/dotfiles";
 
 export default defineTool((install, ctx) => {
   const initFile = `${ctx.currentDir}/fzf-zsh-init`;
 
-  return install('github-release', {
-    repo: 'junegunn/fzf',
+  return install("github-release", {
+    repo: "junegunn/fzf",
   })
-    .hook('after-install', async ({ $ }) => {
+    .hook("after-install", async ({ $ }) => {
       await $`fzf --zsh > ${initFile}`;
     })
-    .bin('fzf')
-    .zsh(shell =>
+    .bin("fzf")
+    .zsh((shell) =>
       shell
         .env({
-          FZF_DEFAULT_OPTS: '--color=fg+:cyan,bg+:black,hl+:yellow,pointer:blue',
+          FZF_DEFAULT_OPTS: "--color=fg+:cyan,bg+:black,hl+:yellow,pointer:blue",
         })
         .sourceFile(initFile)
         .functions({
           // Function to CD into any directory in the CWD and down using ctrl-]
-          'fzf-jump-to-dir': /* zsh */ `
+          "fzf-jump-to-dir": /* zsh */ `
             local dir
             dir=$(
               rg --files --null |
@@ -43,13 +43,12 @@ export default defineTool((install, ctx) => {
             zle reset-prompt
             return $ret
           `,
-        })
-        .always(/* zsh */ `
+        }).always(/* zsh */ `
           # Create a ZLE widget from the function
           zle -N fzf-jump-to-dir
 
           # Need to eval the widget to get the keybindings working with jeffreytse/zsh-vi-mode
           zvm_after_init_commands+=("bindkey '^]' fzf-jump-to-dir")
-        `)
+        `),
     );
 });

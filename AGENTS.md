@@ -9,7 +9,9 @@ Git-hosted tool definitions and companion files for `dotfiles catalog fetch`.
 - Run all catalog checks: `bun check` or `just check`.
 - Run the layout and definition typecheck only: `bun run validate`.
 - Run validator regression tests with 90% line/function coverage: `bun run test`.
-- Format and fix validator code: `bun run fix`.
+- Format all Oxfmt-supported catalog files: `bun run fmt` or `just fmt`.
+- Check formatting without writing files: `bun run fmt:check` or `just fmt-check`. Keep this check in `bun check` so CI covers tool definitions and companion configuration as well as validator code.
+- Fix validator lint issues and format catalog files: `bun run fix` or `just fix`.
 - CI runs these checks on pushes and pull requests. The installer revision is pinned in `.github/workflows/ci.yml` and `justfile`; update both together when upgrading the authoring API.
 
 ## Content contract
@@ -28,3 +30,4 @@ Git-hosted tool definitions and companion files for `dotfiles catalog fetch`.
 - Use project-local `.tmp/` for validation artifacts and `.workspaces/` for worktrees; never use heredocs.
 - Read applicable skills before changes. Record new standing instructions here. Preserve other worktrees and unowned changes.
 - Commit only owned files. Push only when publishing the specific source changes is authorized. Never publish releases, packages or deployments without explicit authorization.
+- Never commit or push private internal hostnames to GitHub. Before committing or pushing, verify the destination and scan staged changes and outgoing commits for private hostnames, including generated content and commit messages.

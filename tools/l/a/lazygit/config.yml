@@ -237,7 +237,7 @@ git:
   #   - main
 
   # Prefix to skip hooks (commits starting with this skip pre-commit hooks)
-  skipHookPrefix: '-'
+  skipHookPrefix: "-"
 
   # Periodically fetch from remote
   # autoFetch: true

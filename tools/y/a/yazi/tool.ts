@@ -1,14 +1,14 @@
-import { defineTool } from '@alexgorbatchev/dotfiles';
+import { defineTool } from "@alexgorbatchev/dotfiles";
 
 export default defineTool((install, ctx) =>
-  install('github-release', {
-    repo: 'sxyazi/yazi',
-    assetPattern: 'yazi-*.zip',
+  install("github-release", {
+    repo: "sxyazi/yazi",
+    assetPattern: "yazi-*.zip",
   })
-    .bin('yazi', 'yazi-*/yazi')
-    .bin('ya', 'yazi-*/ya')
-    .dependsOn('pdftoppm')
-    .zsh(shell =>
+    .bin("yazi", "yazi-*/yazi")
+    .bin("ya", "yazi-*/ya")
+    .dependsOn("pdftoppm")
+    .zsh((shell) =>
       shell
         .env({
           YAZI_CONFIG_HOME: `${ctx.toolDir}/config`,
@@ -24,6 +24,6 @@ export default defineTool((install, ctx) =>
             fi
             rm -f -- "$tmp"
           `,
-        })
-    )
+        }),
+    ),
 );

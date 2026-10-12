@@ -3,6 +3,15 @@ default: check
 check:
     bun check
 
+fmt:
+    bun run fmt
+
+fmt-check:
+    bun run fmt:check
+
+fix:
+    bun run fix
+
 run:
     bun run validate
 
