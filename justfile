@@ -22,6 +22,21 @@ test:
     bun run test
 
 sdk:
-    git clone https://github.com/alexgorbatchev/dotfiles .tmp/installer
-    git -C .tmp/installer checkout f0243ea9dd9626404990a0ad6d9fb83a32448d63
+    #!/usr/bin/env bash
+    set -euo pipefail
+    revision=f0243ea9dd9626404990a0ad6d9fb83a32448d63
+    if [ ! -e .tmp/installer ]; then
+        mkdir -p .tmp
+        git clone git@github.com:alexgorbatchev/dotfiles.git .tmp/installer
+        git -C .tmp/installer checkout --detach "$revision"
+    fi
+    if [ "$(git -C .tmp/installer rev-parse HEAD)" != "$revision" ] || [ -n "$(git -C .tmp/installer status --porcelain)" ]; then
+        echo '.tmp/installer must be clean and at the pinned installer revision' >&2
+        exit 1
+    fi
     cd .tmp/installer && bun install --frozen-lockfile && go run scripts/build/main.go --assets-only
+
+# Prepare dependencies for local development.
+setup:
+    bun install --frozen-lockfile
+    just sdk

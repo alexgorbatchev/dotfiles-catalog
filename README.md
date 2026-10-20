@@ -39,6 +39,10 @@ Replace `fzf` with the ID of the tool you choose from the [tool directory](tools
 
 The repository defaults to `https://github.com/alexgorbatchev/dotfiles-catalog`. Set `DOTFILES_CATALOG_REPO` to choose another repository, or pass `--repo` to override it for one fetch. Use `--ref` to select a branch, tag or commit.
 
+# Development
+
+For catalog development, run `just setup` to install the locked validation dependencies and prepare the pinned installer SDK. Repeated setup reuses a clean SDK checkout at the pinned revision. Run `just run` to validate definitions and `just check` for all catalog checks.
+
 # License
 
 No repository-wide license is declared. Tool binaries are downloaded from their upstream projects and retain their upstream licenses.

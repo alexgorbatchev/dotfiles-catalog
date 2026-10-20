@@ -4,8 +4,9 @@ Git-hosted tool definitions and companion files for `dotfiles catalog fetch`.
 
 ## Commands
 
-- Install validation dependencies: `bun install --frozen-lockfile`.
-- Prepare the canonical installer SDK once per checkout: `just sdk` (requires Git, Bun and Go; `.tmp/installer` must not already exist).
+- Prepare validation dependencies and the canonical installer SDK: `just setup` (requires Git, Bun and Go).
+- Prepare or reuse the pinned installer SDK: `just sdk`; an existing `.tmp/installer` must be clean and at the pinned revision.
+- Validate catalog definitions during development: `just run`.
 - Run all catalog checks: `bun check` or `just check`.
 - Run the layout and definition typecheck only: `bun run validate`.
 - Run validator regression tests with 90% line/function coverage: `bun run test`.
