@@ -3,6 +3,7 @@ name: Catalog CI
 on:
   pull_request:
   push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,12 +20,12 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout catalog
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Checkout pinned installer SDK source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: alexgorbatchev/dotfiles
           ref: f0243ea9dd9626404990a0ad6d9fb83a32448d63
@@ -37,7 +38,7 @@ jobs:
           bun-version: 1.4.0
 
       - name: Setup Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version-file: .tmp/installer/go.mod
           cache-dependency-path: .tmp/installer/go.sum
