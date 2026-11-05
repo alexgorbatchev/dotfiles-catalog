@@ -5,7 +5,7 @@
   "scripts": {
     "check": "bun run fmt:check && bun run lint && bun run typecheck && bun run test && bun run validate",
     "validate": "bun scripts/checkCatalog.ts",
-    "test": "bun test --coverage scripts",
+    "test": "bash scripts/test-run.sh bun test --coverage scripts",
     "typecheck": "tsc --project tsconfig.json",
     "lint": "oxlint --deny-warnings scripts",
     "fmt": "oxfmt --write .",

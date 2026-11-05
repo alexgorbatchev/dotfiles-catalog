@@ -29,6 +29,7 @@ Git-hosted tool definitions and companion files for `dotfiles catalog fetch`.
 - Fetch committed tools into an isolated project, run generation and typechecking there, and inspect imported file bytes and generated shell integration. Never install tools or apply configuration to the maintainer's real home during validation.
 - Typecheck every catalog TypeScript file against the canonical installer SDK with its runtime globals. Keep Bun/Node globals confined to validator code; do not execute tool definitions during CI.
 - Use project-local `.tmp/` for validation artifacts and `.workspaces/` for worktrees; never use heredocs.
+- Test fixtures register cleanup when allocated and use the test runner's unique `TMPDIR`. The runner stops its child process group before removing that directory on success, failure, or cancellation; never remove the shared `.tmp/` or installer SDK.
 - Read applicable skills before changes. Record new standing instructions here. Preserve other worktrees and unowned changes.
 - Commit only owned files. Push only when publishing the specific source changes is authorized. Never publish releases, packages or deployments without explicit authorization.
 - Never commit or push private internal hostnames to GitHub. Before committing or pushing, verify the destination and scan staged changes and outgoing commits for private hostnames, including generated content and commit messages.

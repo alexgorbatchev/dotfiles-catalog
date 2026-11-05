@@ -1,17 +1,12 @@
-import { afterEach, beforeEach, expect, test } from "bun:test";
-import { mkdir, mkdtemp, rm } from "node:fs/promises";
-import { resolve } from "node:path";
+import { beforeEach, expect, test } from "bun:test";
+import { mkdir } from "node:fs/promises";
 import { validateLayout } from "../validateLayout";
+import { factory_testDirectory } from "./fixtures";
 
 let rootPath: string;
 
-beforeEach(async () => {
-  await mkdir(".tmp/layout-tests", { recursive: true });
-  rootPath = await mkdtemp(resolve(".tmp/layout-tests/catalog-"));
-});
-
-afterEach(async () => {
-  await rm(rootPath, { recursive: true, force: true });
+beforeEach(() => {
+  rootPath = factory_testDirectory();
 });
 
 test("accepts sharded tools, one-character IDs and companion files", async () => {
