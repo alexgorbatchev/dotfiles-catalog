@@ -47,14 +47,14 @@ test.each([
 ])("rejects invalid types and unavailable runtime APIs: %s", async (source, stdout) => {
   await Bun.write(`${rootPath}/tools/x/_/x/tool.ts`, source);
   const result = await typecheckCatalog(rootPath, sdkPath, compilerPath, ["x/_/x/tool.ts"]);
-  expect(result).toEqual({ exitCode: 1, stdout, stderr: "" });
+  expect(result).toEqual({ exitCode: 2, stdout, stderr: "" });
 });
 
 test("includes companion TypeScript files in the compiler program", async () => {
   await Bun.write(`${rootPath}/tools/x/_/x/tool.ts`, "export default 1;");
   await Bun.write(`${rootPath}/tools/x/_/x/helper.ts`, 'export const value: number = "bad";');
   const result = await typecheckCatalog(rootPath, sdkPath, compilerPath, ["x/_/x/helper.ts", "x/_/x/tool.ts"]);
-  expect(result.exitCode).toBe(1);
+  expect(result.exitCode).toBe(2);
   expect(result.stdout).toBe(
     "tools/x/_/x/helper.ts(1,14): error TS2322: Type 'string' is not assignable to type 'number'.\n",
   );
